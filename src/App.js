@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function App() {
   const [textValue, setTextValue] = useState("");
@@ -40,10 +40,15 @@ function App() {
       })
       .join("\r\n");
     setCopyData(copy);
+    handleCopy(copy);
   }
 
-  function handleCopy() {
-    return navigator.clipboard.writeText(copyData);
+  function handleCopy(data) {
+    navigator.clipboard.writeText(data);
+  }
+
+  function handleClear() {
+    setTextValue("");
   }
 
   return (
@@ -57,11 +62,11 @@ function App() {
             value={textValue}
           />
           <div className="Flex">
-            <button onClick={() => setTextValue("")} className="ClearButton">
+            <button onClick={handleClear} className="ClearButton">
               clear
             </button>
             <button onClick={() => translator(textValue)} className="Button">
-              submit
+              submit & copy
             </button>
           </div>
         </div>
@@ -72,9 +77,6 @@ function App() {
             value={copyData}
             onChange={setCopyData}
           />
-          <button className="CopyButton" onClick={handleCopy}>
-            copy
-          </button>
         </div>
       </div>
     </>
