@@ -35,7 +35,7 @@ function App() {
 
     const copy = testCases
       .map((testCase) => {
-        const line = `await test.step('${testCase}', () => // your test is here );`;
+        const line = `await test.step('${testCase}', () => yourtest );`;
         return String(line);
       })
       .join("\r\n");
