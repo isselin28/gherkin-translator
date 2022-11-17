@@ -18,12 +18,12 @@
 
 .Textarea {
   width: 320px;
-  height: 500px;
+  height: 450px;
 }
 
 .ResultBox {
   width: 800px;
-  height: 505px;
+  height: 455px;
   border: 1px solid black;
   text-align: left;
 }

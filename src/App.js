@@ -4,12 +4,10 @@ import React, { useState } from "react";
 
 function App() {
   const [textValue, setTextValue] = useState("");
-  const [result, setResult] = useState("");
+  const [copyData, setCopyData] = useState("");
   function translator(text) {
     const cleanText = text.replace(/\n|\r/g, " ");
     const parsedText = cleanText.split(" ");
-
-    console.log("parsedText", parsedText);
 
     const splitter = ["When", "Then", "And", "Given"];
     let testCases = [];
@@ -18,6 +16,11 @@ function App() {
     let sentenceArr = [];
     for (let i = 1; i < parsedText.length; i++) {
       const gherkin = splitter.includes(parsedText[i]);
+
+      if (parsedText[i] === "") {
+        continue;
+      }
+
       if (!gherkin && pointer !== i) {
         sentenceArr.push(parsedText[i]);
       }
@@ -30,22 +33,17 @@ function App() {
       }
     }
 
-    const scenario = testCases.map((testCase) => {
-      const line = `await test.step('${testCase}', () => // your test is here );`;
-
-      return (
-        <div>
-          {line}
-          <br />
-        </div>
-      );
-    });
-
-    setResult(scenario);
+    const copy = testCases
+      .map((testCase) => {
+        const line = `await test.step('${testCase}', () => // your test is here );`;
+        return String(line);
+      })
+      .join("\r\n");
+    setCopyData(copy);
   }
 
   function handleCopy() {
-    return navigator.clipboard.writeText(result);
+    return navigator.clipboard.writeText(copyData);
   }
 
   return (
@@ -69,7 +67,11 @@ function App() {
         </div>
         <div className="FlexColumn">
           <div className="Title">Result</div>
-          <div className="ResultBox">{result}</div>
+          <textarea
+            className="ResultBox"
+            value={copyData}
+            onChange={setCopyData}
+          />
           <button className="CopyButton" onClick={handleCopy}>
             copy
           </button>
