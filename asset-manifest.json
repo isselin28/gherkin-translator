@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gherkin-translator/static/css/main.4852870e.css",
+    "main.js": "/gherkin-translator/static/js/main.633f5c38.js",
+    "static/js/787.dabf5795.chunk.js": "/gherkin-translator/static/js/787.dabf5795.chunk.js",
+    "index.html": "/gherkin-translator/index.html",
+    "main.4852870e.css.map": "/gherkin-translator/static/css/main.4852870e.css.map",
+    "main.633f5c38.js.map": "/gherkin-translator/static/js/main.633f5c38.js.map",
+    "787.dabf5795.chunk.js.map": "/gherkin-translator/static/js/787.dabf5795.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4852870e.css",
+    "static/js/main.633f5c38.js"
+  ]
+}
