@@ -1,6 +1,6 @@
 import "./App.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function App() {
   const [textValue, setTextValue] = useState("");
@@ -51,6 +51,9 @@ function App() {
     setTextValue("");
   }
 
+  const placeholderInput =
+    "(example)\n\nGiven user has logged in\n\nAnd user add a tomato to cart\n\nWhen User navigates to Cart page\n\nThen user see tomato displayed";
+
   return (
     <>
       <div className="Flex">
@@ -60,6 +63,7 @@ function App() {
             onChange={(e) => setTextValue(e.target.value)}
             className="Textarea"
             value={textValue}
+            placeholder={placeholderInput}
           />
           <div className="Flex">
             <button onClick={handleClear} className="ClearButton">
@@ -71,11 +75,12 @@ function App() {
           </div>
         </div>
         <div className="FlexColumn">
-          <div className="Title">Result</div>
+          <div className="Title">Steps Result</div>
           <textarea
             className="ResultBox"
             value={copyData}
             onChange={setCopyData}
+            readOnly
           />
         </div>
       </div>

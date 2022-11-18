@@ -23,8 +23,9 @@
 
 .ResultBox {
   width: 800px;
-  height: 455px;
-  border: 1px solid black;
+  height: 450px;
+  border: 1px solid grey;
+  border-radius: 2px;
   text-align: left;
 }
 
