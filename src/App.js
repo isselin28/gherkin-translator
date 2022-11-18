@@ -57,10 +57,11 @@ function App() {
 
   function handleClear() {
     setTextValue("");
+    setIsCopied(false);
   }
 
   const placeholderInput =
-    "(example)\n\nGiven user has logged in\n\nAnd user add a tomato to cart\n\nWhen User navigates to Cart page\n\nThen user see tomato displayed";
+    "(example)\n\nGiven user has logged in And user add a cucumber to cart \n\nAnd user add another cucumber\nThen user add another cucumber again\n\nWhen User navigates to Cart page\n\nThen user see many cucumbers displayed";
 
   return (
     <>
