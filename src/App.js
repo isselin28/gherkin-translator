@@ -5,6 +5,13 @@ import React, { useState } from "react";
 function App() {
   const [textValue, setTextValue] = useState("");
   const [copyData, setCopyData] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
+
+  function handleInput(e) {
+    setIsCopied(false);
+    setTextValue(e.target.value);
+  }
+
   function translator(text) {
     const cleanText = text.replace(/\n|\r/g, " ");
     const parsedText = cleanText.split(" ");
@@ -45,6 +52,7 @@ function App() {
 
   function handleCopy(data) {
     navigator.clipboard.writeText(data);
+    setIsCopied(true);
   }
 
   function handleClear() {
@@ -60,7 +68,7 @@ function App() {
         <div className="FlexColumn">
           <div className="Title">Translate Gherkin</div>
           <textarea
-            onChange={(e) => setTextValue(e.target.value)}
+            onChange={handleInput}
             className="Textarea"
             value={textValue}
             placeholder={placeholderInput}
@@ -75,13 +83,16 @@ function App() {
           </div>
         </div>
         <div className="FlexColumn">
-          <div className="Title">Steps Result</div>
+          <div className="Title">Result</div>
           <textarea
             className="ResultBox"
             value={copyData}
             onChange={setCopyData}
             readOnly
           />
+          {isCopied && (
+            <div className="CopyFeedbackText">Copied to clipboard!</div>
+          )}
         </div>
       </div>
     </>
